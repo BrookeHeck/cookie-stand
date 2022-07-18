@@ -11,7 +11,7 @@ class CookieShop {
     this.location = location;
     this.minCust = minCust;
     this.maxCust = maxCust;
-    this.average = average;
+    this.average = Math.ceil(average);
     this.totalSales = this.getHourlyTotals();
   }
 
@@ -20,10 +20,10 @@ class CookieShop {
     let cookieTotals = [];
     let total = 0;
     for(let i = 0; i < 14; i++) {
-      let hourly = Math.floor(Math.random() * this.average
-       + 2);
-      cookieTotals.push(hourly);
-      total += hourly;
+      let customers = Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
+      let cookies = customers * this.average;
+      cookieTotals.push(cookies);
+      total += cookies;
     }
     cookieTotals.push(total);
     return cookieTotals;
@@ -37,14 +37,17 @@ const paris = new CookieShop('Paris', 20, 38, 2.3);
 const lima = new CookieShop('Lima', 2, 16, 4.6);
 
 const shopArr = [seattle, tokyo, dubai, paris, lima];
-const properties = ['location', 'minCust', 'maxCust', 'average', 'totalSales'];
 
 function createDisplayTable(shop) {
   const list = document.createElement('ul');
   list.innerHTML = shop.location;
-  for(let i = 1; i < 5; i++) {
+  for(let i = 0; i < shop.totalSales.length; i++) {
     const listItem = document.createElement('li');
-    listItem.innerHTML = `${properties[i]}: ${shop[properties[i]]}`;
+    if (i < 14) {
+      listItem.innerHTML = `${i + 6}00: ${shop.totalSales[i]} cookies`;
+    } else if(i === 14) {
+      listItem.innerHTML = `Total: ${shop.totalSales[14]}`
+    }
     list.append(listItem);
   }
   return list;
