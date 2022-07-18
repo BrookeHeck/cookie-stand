@@ -13,24 +13,27 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 45px;
-  display: inline;
+  font-size: 5em;
 }
 
 h2 {
   margin-left: 10px;
-  font-size: 32px;
+  font-size: 2.75em;
 }
 
 h3 {
   margin-left: 20px;
-  font-size: 26px;
+  font-size: 1.8em;
 }
 
 ul {
-  font-size: 24px;
+  font-size: 1em;
   padding: 10px;
   list-style-type: disc;
+  background-color: #ffddd2;
+  width: fit-content;
+  align-content: left;
+  border: solid #e63946 1px;
 }
 
 li {
@@ -39,7 +42,7 @@ li {
   color: #1d3557;
   padding: 4px;
   margin-left: 1.5em;
-  width: fit-content;
+  width: 25em;
 }
 
 li:hover {
@@ -48,7 +51,7 @@ li:hover {
 }
 
 p {
-  font-size: 20px;
+  font-size: 1.25em;
   padding: 10px;
   margin-left: 1.5em;
   width: 70%;
