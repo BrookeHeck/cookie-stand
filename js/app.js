@@ -13,6 +13,7 @@ class CookieShop {
     this.maxCust = maxCust;
     this.average = Math.ceil(average);
     this.totalSales = this.getHourlyTotals();
+    this.hourlyServers = this.determineNumServers();
   }
 
   // function generates a random number of customers based on the stores min and max customers for every hour
@@ -28,6 +29,18 @@ class CookieShop {
     }
     cookieTotals.push(total);
     return cookieTotals;
+  }
+
+  determineNumServers() {
+    let hourlyServers = [];
+    for (let numCookies of this.totalSales) {
+      if (numCookies <= 40) {
+        hourlyServers.push(2);
+      } else {
+        hourlyServers.push(Math.ceil((numCookies / this.average) / 20));
+      }
+    }
+    return hourlyServers;
   }
 }
 
@@ -55,25 +68,35 @@ function createRow(header, arr) {
     const cell = document.createElement('td');
     cell.innerHTML = arr[i];
     row.appendChild(cell);
-    table.appendChild(row);
   }
   return row;
 }
 
+function createTable(data) {
+  let arr;
+  const table = document.createElement('table');
+
+  // create a time row
+  let timeRow = createRow('Time', time);
+  table.appendChild(timeRow);
+
+  // loop through each shop and call createRow function to make a row for each shop
+  for(let shop of shopArr) {
+    if(data === 'cookie') {
+      arr = shop.totalSales; 
+    } else {
+      arr = shop.hourlyServers;
+    }
+    table.appendChild(createRow(shop.location, arr));
+  }
+  container.appendChild(table);
+}
+
 // grab the container created in the sales.html page
 const container = document.querySelector('#tables');
+createTable('cookie');
+createTable('server');
 
-const table = document.createElement('table');
-
-// create a time row
-let timeRow = createRow('Time', time);
-table.appendChild(timeRow);
-
-// loop through each shop and call createRow function to make a row for each shop
-for(let shop of shopArr) {
-  table.appendChild(createRow(shop.location, shop.totalSales));
-}
-container.appendChild(table);
 
 
 

@@ -71,12 +71,18 @@ footer {
 footer p {
   font-size: 10px;
   color: white;
-  margin-left: auto;
+  margin-left: 0px;
 }
 
 footer a {
   font-size: 10px;
   color: white;
+  margin-left: 0px;
+  padding: 10px;
+}
+
+#tables table {
+  padding: 10px;
 }
 
 td {
