@@ -31,6 +31,7 @@ class CookieShop {
     return cookieTotals;
   }
 
+  // every server can serve 20 customers an hour, this function determines the min servers needed based on the total sales
   determineNumServers() {
     let hourlyServers = [];
     for (let numCookies of this.totalSales) {
@@ -44,15 +45,26 @@ class CookieShop {
   }
 }
 
-// a new object is created for each location
-const seattle = new CookieShop('Seattle', 23, 65, 6.3);
-const tokyo = new CookieShop('Tokyo', 3, 24, 1.2);
-const dubai = new CookieShop('Dubai', 11, 38, 3.7);
-const paris = new CookieShop('Paris', 20, 38, 2.3);
-const lima = new CookieShop('Lima', 2, 16, 4.6);
+// shop data inclueds location, min cust, max cust, average
+let shopData = [
+  ['Seattle', 23, 65, 6.3],
+  ['Tokyo', 3, 24, 1.2],
+  ['Dubai', 11, 38, 3.7],
+  ['Paris', 20, 38, 2.3],
+  ['Lima', 2, 16, 4.6]
+];
 
-// I put the objects and times in an array so it is easier to loop through them latter
-const shopArr = [seattle, tokyo, dubai, paris, lima];
+// function loops through the shops to make objects and pushes it onto an array holding all shop objects
+let shopArr = [];
+function createShopObjects() {
+  for(let shop of shopData) {
+    let newShop = new CookieShop(shop[0], shop[1], shop[2], shop[3]);
+    shopArr.push(newShop);
+  }
+}
+createShopObjects();
+
+// this array will be used to create the time row
 const time = ['6am', '7am', '8am', '9am', '10am',
 '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm',
 '6pm', '7pm', 'Total'];
