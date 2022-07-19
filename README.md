@@ -9,6 +9,8 @@ I built an app that displays information about Pat's multiple stores and shows h
 [GitHub Webpage](https://brookeheck.github.io/cookie-stand/)
 \
 [GitHub Repo](https://github.com/BrookeHeck/cookie-stand)
+- Resources
+[The table element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table)
 
 ### Reflections and Comments
 This was my first time using constructors in JS. I have coded in Java before, so I may have jumped ahead and used a class with a constructor method. Once you get the hang of classes and constructors they are an amazing coding tool and allowed me to easily create new instances for each store.
