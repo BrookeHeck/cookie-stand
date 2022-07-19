@@ -6,6 +6,10 @@ class CookieShop {
   maxCust;
   average;
   totalSales;
+  hourlyServers;
+  accurateProjections;
+  controlCurve = [.5, .75, 1, .6, .8, 1, .7, .4, .6, .9, .7,
+  .5, .3, .4, .6];
 
   constructor(location, minCust, maxCust, average) {
     this.location = location;
@@ -14,6 +18,7 @@ class CookieShop {
     this.average = Math.ceil(average);
     this.totalSales = this.getHourlyTotals();
     this.hourlyServers = this.determineNumServers();
+    this.accurateProjections = this.applySaleCurve();
   }
 
   // function generates a random number of customers based on the stores min and max customers for every hour
@@ -42,6 +47,14 @@ class CookieShop {
       }
     }
     return hourlyServers;
+  }
+
+  applySaleCurve() {
+    let accurateProjections = [];
+    for(let i = 0; i < this.controlCurve.length; i++) {
+      accurateProjections.push(+(this.controlCurve[i] * this.totalSales[i]).toFixed(1));
+    }
+    return accurateProjections;
   }
 }
 
@@ -102,8 +115,10 @@ function createTable(data) {
   for(let shop of shopArr) {
     if(data === 'Cookie Sales by Hours') {
       arr = shop.totalSales; 
-    } else {
+    } else if(data === 'Servers Required by Hour') {
       arr = shop.hourlyServers;
+    } else {
+      arr = shop.accurateProjections;
     }
     table.appendChild(createRow(shop.location, arr));
   }
@@ -114,6 +129,7 @@ function createTable(data) {
 const container = document.querySelector('#tables');
 createTable('Cookie Sales by Hours');
 createTable('Servers Required by Hour');
+createTable('Control Curve Sales Projections');
 
 
 
