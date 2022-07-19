@@ -38,11 +38,13 @@ const dubai = new CookieShop('Dubai', 11, 38, 3.7);
 const paris = new CookieShop('Paris', 20, 38, 2.3);
 const lima = new CookieShop('Lima', 2, 16, 4.6);
 
+// I put the objects and times in an array so it is easier to loop through them latter
 const shopArr = [seattle, tokyo, dubai, paris, lima];
 const time = ['6am', '7am', '8am', '9am', '10am',
 '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm',
 '6pm', '7pm', 'Total'];
 
+// function creates creates a table row and uses the hourly cookies sales array to make table data
 function createRow(header, arr) {
   let row = document.createElement('tr');
   let titleHead = document.createElement('td');
@@ -58,12 +60,16 @@ function createRow(header, arr) {
   return row;
 }
 
-
-
+// grab the container created in the sales.html page
 const container = document.querySelector('#tables');
+
 const table = document.createElement('table');
+
+// create a time row
 let timeRow = createRow('Time', time);
 table.appendChild(timeRow);
+
+// loop through each shop and call createRow function to make a row for each shop
 for(let shop of shopArr) {
   table.appendChild(createRow(shop.location, shop.totalSales));
 }
