@@ -76,13 +76,19 @@ function createTable(data) {
   let arr;
   const table = document.createElement('table');
 
+  const header = document.createElement('thead');
+  const headerData = document.createElement('tr');
+  headerData.innerHTML = data;
+  header.appendChild(headerData);
+  table.appendChild(header);
+
   // create a time row
   let timeRow = createRow('Time', time);
   table.appendChild(timeRow);
 
   // loop through each shop and call createRow function to make a row for each shop
   for(let shop of shopArr) {
-    if(data === 'cookie') {
+    if(data === 'Cookie Sales by Hours') {
       arr = shop.totalSales; 
     } else {
       arr = shop.hourlyServers;
@@ -94,8 +100,8 @@ function createTable(data) {
 
 // grab the container created in the sales.html page
 const container = document.querySelector('#tables');
-createTable('cookie');
-createTable('server');
+createTable('Cookie Sales by Hours');
+createTable('Servers Required by Hour');
 
 
 

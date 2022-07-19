@@ -82,7 +82,7 @@ footer a {
 }
 
 #tables table {
-  padding: 10px;
+  margin: 15px;
 }
 
 td {
@@ -91,4 +91,10 @@ td {
   font-family: Arial, Helvetica, sans-serif;
   color: #1d3557;
 }
+
+thead {
+  font-size: 20px;
+}
+
+
 
