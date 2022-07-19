@@ -26,14 +26,20 @@ h3 {
   font-size: 1.8em;
 }
 
+p {
+  margin-left: 35px;
+  font-size: 1.25em;
+}
+
 ul {
   font-size: 2em;
-  padding: 10px;
   list-style-type: disc;
   background-color: #ffddd2;
   width: fit-content;
   align-content: left;
   border: solid #e63946 1px;
+  margin: 5px auto 5px 35px;
+  padding: 10px;
 }
 
 li {
@@ -42,7 +48,7 @@ li {
   color: #1d3557;
   padding: 4px;
   margin-left: 1.5em;
-  width: 25em;
+  width: fit-content;
 }
 
 li:hover {
@@ -70,6 +76,7 @@ footer {
 footer p {
   font-size: 10px;
   color: white;
+  margin-left: auto;
 }
 
 footer a {
@@ -80,5 +87,7 @@ footer a {
 td {
   padding: 8px;
   border: solid #1d3557 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1d3557;
 }
 
