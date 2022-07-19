@@ -15,7 +15,8 @@ class CookieShop {
     this.totalSales = this.getHourlyTotals();
   }
 
-  
+  // function generates a random number of customers based on the stores min and max customers for every hour
+  // it then multiplies it by the average cookie sale for each cookie to get the total cookies sold that hour
   getHourlyTotals() {
     let cookieTotals = [];
     let total = 0;
@@ -30,6 +31,7 @@ class CookieShop {
   }
 }
 
+// a new object is created for each location
 const seattle = new CookieShop('Seattle', 23, 65, 6.3);
 const tokyo = new CookieShop('Tokyo', 3, 24, 1.2);
 const dubai = new CookieShop('Dubai', 11, 38, 3.7);
@@ -37,26 +39,35 @@ const paris = new CookieShop('Paris', 20, 38, 2.3);
 const lima = new CookieShop('Lima', 2, 16, 4.6);
 
 const shopArr = [seattle, tokyo, dubai, paris, lima];
+const time = ['6am', '7am', '8am', '9am', '10am',
+'11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm',
+'6pm', '7pm', 'Total'];
 
-function createDisplayTable(shop) {
-  const list = document.createElement('ul');
-  list.innerHTML = shop.location;
-  for(let i = 0; i < shop.totalSales.length; i++) {
-    const listItem = document.createElement('li');
-    if (i < 14) {
-      listItem.innerHTML = `${i + 6}00: ${shop.totalSales[i]} cookies`;
-    } else if(i === 14) {
-      listItem.innerHTML = `Total: ${shop.totalSales[14]}`
-    }
-    list.append(listItem);
+function createRow(header, arr) {
+  let row = document.createElement('tr');
+  let titleHead = document.createElement('td');
+  titleHead.innerHTML = header;
+  row.appendChild(titleHead);
+  for(let i = 0; i < arr.length; i++) {
+    // add values to the row
+    const cell = document.createElement('td');
+    cell.innerHTML = arr[i];
+    row.appendChild(cell);
+    table.appendChild(row);
   }
-  return list;
+  return row;
 }
+
+
 
 const container = document.querySelector('#tables');
+const table = document.createElement('table');
+let timeRow = createRow('Time', time);
+table.appendChild(timeRow);
 for(let shop of shopArr) {
-  container.appendChild(createDisplayTable(shop));
+  table.appendChild(createRow(shop.location, shop.totalSales));
 }
+container.appendChild(table);
 
 
 
