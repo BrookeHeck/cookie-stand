@@ -1,23 +1,20 @@
 body {
-  margin: 0 auto;
   flex-direction: column;
   font-family: 'Times New Roman', Times, serif;
   background-color: #f1faee;
   color: #457b9d;
-  margin-top: 10px;
-  margin-left: 15px;
   width: 75%;
   align-items: center;
+  margin: 10px auto;
 }
 
 header {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   background-color: #1d3557;
   border: solid #e63946 1px;
   border-radius: 5px;
 }
+
 
 nav {
   display: flex;
@@ -32,6 +29,7 @@ nav a {
   width: 100%;
   border-right: solid #1d3557 1px;
   border-left: solid #1d3557 1px;
+  border-bottom: solid #1d3557 1px;
   font-family: 'Ibarra Real Nova', sans-serif;
   font-size: 18px;
   text-decoration: none;
@@ -53,7 +51,7 @@ h1 {
 
 h2 {
   margin-left: 10px;
-  font-size: 2.75em;
+  font-size: 36px;
 }
 
 h3 {
@@ -63,8 +61,7 @@ h3 {
 
 p {
   margin-left: 35px;
-  font-size: 1.25em;
-  width: 75%;
+  font-size: 20px;
   padding: 10px;
 }
 
@@ -75,6 +72,7 @@ ul {
   width: fit-content;
   align-content: left;
   border: solid #e63946 1px;
+  border-radius: 5px;
   margin: 5px auto 5px 35px;
   padding: 10px;
 }
@@ -116,6 +114,12 @@ footer a {
   padding: 10px;
 }
 
+#ourStoryImg {
+  width: 38%;
+  height: auto;
+  padding: 20px;
+}
+
 #tables table {
   margin: 15px;
 }
@@ -129,6 +133,16 @@ td {
 
 thead {
   font-size: 20px;
+}
+
+.homePageArticle {
+  display: flex;
+  justify-content: space-around;
+}
+
+#headerPhoto {
+  width: 10em;
+  height: auto;
 }
 
 
