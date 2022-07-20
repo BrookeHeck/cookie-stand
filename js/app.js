@@ -52,7 +52,7 @@ class CookieShop {
   applySaleCurve() {
     let accurateProjections = [];
     for(let i = 0; i < this.controlCurve.length; i++) {
-      accurateProjections.push(+(this.controlCurve[i] * this.totalSales[i]).toFixed(1));
+      accurateProjections.push(Math.ceil(this.controlCurve[i] * this.totalSales[i]));
     }
     return accurateProjections;
   }
@@ -82,6 +82,21 @@ const time = ['6am', '7am', '8am', '9am', '10am',
 '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm',
 '6pm', '7pm', 'Total'];
 
+// this function will calculate the total sales per hour from all the shops
+function calcTotalHourly(data) {
+  let hourlyTotalArr = [];
+  for (let i = 0; i < shopArr[0].totalSales.length; i++) {
+    let total = 0;
+    for(let shop of shopArr) {
+      if (data === 'Cookie Sales by Hours') total += shop.totalSales[i];
+      else if (data === 'Servers Required by Hour') total += shop.hourlyServers[i];
+      else total += shop.accurateProjections[i];    
+    }
+    hourlyTotalArr.push(total);
+  }
+  return hourlyTotalArr;
+}
+
 // function creates creates a table row and uses the hourly cookies sales array to make table data
 function createRow(header, arr) {
   let row = document.createElement('tr');
@@ -99,6 +114,7 @@ function createRow(header, arr) {
 
 function createTable(data) {
   let arr;
+  let bottomRowArr;
   const table = document.createElement('table');
 
   const header = document.createElement('thead');
@@ -114,7 +130,7 @@ function createTable(data) {
   // loop through each shop and call createRow function to make a row for each shop
   for(let shop of shopArr) {
     if(data === 'Cookie Sales by Hours') {
-      arr = shop.totalSales; 
+      arr = shop.totalSales;
     } else if(data === 'Servers Required by Hour') {
       arr = shop.hourlyServers;
     } else {
@@ -122,6 +138,7 @@ function createTable(data) {
     }
     table.appendChild(createRow(shop.location, arr));
   }
+  table.appendChild(createRow('Total', calcTotalHourly(data)));
   container.appendChild(table);
 }
 
