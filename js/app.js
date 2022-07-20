@@ -130,9 +130,3 @@ const container = document.querySelector('#tables');
 createTable('Cookie Sales by Hours');
 createTable('Servers Required by Hour');
 createTable('Control Curve Sales Projections');
-
-
-
-
-
-
