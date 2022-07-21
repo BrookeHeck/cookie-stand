@@ -83,22 +83,27 @@ h1, h2, h3 {
   color: #e63946;
 }
 
+h2, h3 {
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+
 main section {
   display: flex;
   justify-content: space-around;
   gap: 40px;
   width: 100%;
-  padding-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 main section ul {
   margin-left: 30px;
 }
 
-main section:nth-of-type(2) {
+main #homePageBanner {
   margin: 0 auto;
   justify-content: center;
-  background-color: lightcyan;
+  background-color: rgb(222, 215, 201);
 }
 
 h2 {
@@ -128,6 +133,7 @@ footer {
   background-color: #1d3557;
   width: 100%;
   height: 60px;
+  margin-top: 20px;
 }
 
 #tables table {
@@ -159,6 +165,14 @@ thead {
   border: none;
 }
 
+#store ul {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-around;
+  height: 300px;
+}
+
 #store li {
   list-style-type: none;
   font-size: 16px;
@@ -172,14 +186,54 @@ thead {
   font-size: 24px;
 }
 
-#store button {
-  font-size: 16px;
+button {
+  font-size: 26px;
   width: fit-content;
+  height: fit-content;
   color: #e63946;
-  background-color: #1d3557;
+  background-color: whitesmoke;
   align-content: center;
   border: solid #1d3557 1px;
   border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+button:hover {
+  background-color: #457b9d;
+}
+
+.formDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.formDiv>* {
+  margin: 4px;
+}
+
+#storeForm button {
+  margin-top: 30px;
+}
+
+#storeForm {
+  display: flex;
+  align-items: center;
+}
+
+#storeForm>* {
+  flex: 1;
+}
+
+#storeForm .formDiv legend {
+  margin: 0 auto;
+  padding: 6px;
+  font-size: 24px;
+  color: #e63946;
 }
 
 

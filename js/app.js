@@ -112,6 +112,7 @@ function createRow(header, arr) {
   return row;
 }
 
+// creates a table based on the specified data set that is passed to the function
 function createTable(data) {
   let arr;
   let bottomRowArr;
@@ -144,6 +145,80 @@ function createTable(data) {
 
 // grab the container created in the sales.html page
 const container = document.querySelector('#tables');
-createTable('Cookie Sales by Hours');
-createTable('Servers Required by Hour');
-createTable('Curve Sales Projections');
+function renderTables() {
+  container.innerHTML = '';
+  createTable('Cookie Sales by Hours');
+  createTable('Servers Required by Hour');
+  createTable('Curve Sales Projections');
+}
+renderTables();
+
+
+// HTML update or add store part of webpage
+const formContainer = document.querySelector('#storeForm');
+const addButton = document.querySelector('#addButton');
+addButton.addEventListener('click', createForm);
+
+
+// creates a form when user clicks on the add or update button
+// submit button has event listener that will update a store if the location already exists or add a new store if it doesn't exist
+function createForm() {
+  const inputs = [
+    ['Location', 'location'],
+    ['Minimum Customers', 'minCust'],
+    ['Maximum Customers', 'maxCust'],
+    ['Average', 'average']
+  ];
+  let formDiv = document.createElement('fieldset');
+  let legend = document.createElement('legend');
+  legend.innerHTML = 'Store Information';
+  formDiv.appendChild(legend);
+  for(let input of inputs) {
+    
+    formDiv.setAttribute('class', 'formDiv');
+    
+    let label = document.createElement('label');
+    label.setAttribute('for', input[1]);
+    label.innerHTML = input[0];
+    formDiv.appendChild(label);
+
+    let inputField = document.createElement('input');
+    inputField.setAttribute('type', 'text');
+    inputField.setAttribute('name', input[1]);
+    inputField.setAttribute('id', input[1]);
+    formDiv.appendChild(inputField);
+  }
+
+  let submitButton = document.createElement('button');
+  submitButton.innerHTML = 'Submit';
+  formDiv.appendChild(submitButton);
+  submitButton.addEventListener('click', () => {
+    let isPresent = false;
+    let shopObj = null;
+    let location = document.querySelector('#location');
+    let minCust = document.querySelector('#minCust');
+    let maxCust = document.querySelector('#maxCust');
+    let average = document.querySelector('#average');
+    for(let shop of shopArr) {
+      if(shop.location.toLowerCase() === location.value.toLowerCase()) {
+        shopObj = shop;
+        isPresent = true;
+        break;
+      }
+    }
+    if(!isPresent) {
+      shopObj = new CookieShop(location.value, minCust.value, maxCust.value, average.value);
+      shopArr.push(shopObj);
+    } else {
+      shopObj.minCust = minCust.value;
+      shopObj.maxCust = maxCust.value;
+      shopObj.average = average.value;
+    }
+    formDiv.remove();
+    addButton.disabled = '';
+    renderTables();
+  });
+  formContainer.appendChild(formDiv);
+  addButton.disabled = 'disabled';
+}
+
