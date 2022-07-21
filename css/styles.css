@@ -190,8 +190,8 @@ button {
   font-size: 26px;
   width: fit-content;
   height: fit-content;
-  color: #e63946;
-  background-color: whitesmoke;
+  background-color: #457b9d;
+  color: white; 
   align-content: center;
   border: solid #1d3557 1px;
   border-radius: 5px;
@@ -200,7 +200,8 @@ button {
 }
 
 button:hover {
-  background-color: #457b9d;
+  color: #e63946;
+  background-color: whitesmoke;
 }
 
 .formDiv {
@@ -234,6 +235,39 @@ button:hover {
   padding: 6px;
   font-size: 24px;
   color: #e63946;
+}
+
+#buyForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#buyForm fieldset {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin-top: 30px;
+}
+
+#buyForm fieldset>* {
+  width: fit-content;
+  margin: 4px;
+}
+
+#buyForm fieldset>input {
+  margin-right: 4px;
+}
+
+#buyForm button {
+  width: 100%;
+}
+
+#buyForm legend {
+  font-size: 24px;
+  color: #e63946;
+  padding-bottom: 15px;
 }
 
 
