@@ -112,6 +112,7 @@ function createRow(header, arr) {
   return row;
 }
 
+// creates a table based on the specified data set that is passed to the function
 function createTable(data) {
   let arr;
   let bottomRowArr;
@@ -147,3 +148,46 @@ const container = document.querySelector('#tables');
 createTable('Cookie Sales by Hours');
 createTable('Servers Required by Hour');
 createTable('Curve Sales Projections');
+
+
+// HTML update or add store part of webpage
+const formContainer = document.querySelector('#storeForm');
+const addButton = document.querySelector('#addButton');
+addButton.addEventListener('click', createForm);
+const updateButton = document.querySelector('#updateButton');
+updateButton.addEventListener('click', createForm);
+
+function createForm() {
+  const inputs = [
+    ['Location: ', 'location'],
+    ['Minimum Customers: ', 'minCust'],
+    ['Maximum Customers: ', 'maxCust'],
+    ['Average: ', 'average']
+  ];
+  let formDiv = document.createElement('div');
+  for(let input of inputs) {
+    
+    formDiv.setAttribute('class', 'formDiv');
+    
+    let label = document.createElement('label');
+    label.setAttribute('for', input[1]);
+    label.innerHTML = input[0];
+    formDiv.appendChild(label);
+
+    let inputField = document.createElement('input');
+    inputField.setAttribute('type', 'text');
+    inputField.setAttribute('name', input[1]);
+    inputField.setAttribute('id', input[1]);
+    formDiv.appendChild(inputField);
+  }
+
+  let submitButton = document.createElement('button');
+  submitButton.innerHTML = 'Submit';
+  formDiv.appendChild(submitButton);
+
+  formContainer.appendChild(formDiv);
+
+  addButton.disabled = 'disabled';
+  addButton.disabled = 'disabled';
+}
+
