@@ -213,6 +213,9 @@ function createForm() {
       shopObj.minCust = minCust.value;
       shopObj.maxCust = maxCust.value;
       shopObj.average = average.value;
+      shopObj.totalSales = shopObj.getHourlyTotals();
+      shopObj.hourlyServers = shopObj.determineNumServers();
+      shopObj.accurateProjections = shopObj.applySaleCurve();
     }
     formDiv.remove();
     addButton.disabled = '';
