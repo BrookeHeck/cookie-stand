@@ -216,5 +216,19 @@ button:hover {
   margin: 4px;
 }
 
+#storeForm button {
+  margin-top: 30px;
+}
+
+#storeForm {
+  display: flex;
+  justify-items: space-around;
+  margin: 0 auto;
+}
+
+#storeForm>* {
+  flex: 1;
+}
+
 
 
