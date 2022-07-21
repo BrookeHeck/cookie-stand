@@ -83,6 +83,10 @@ h1, h2, h3 {
   color: #e63946;
 }
 
+h2, h3 {
+  padding-bottom: 15px;
+}
+
 main section {
   display: flex;
   justify-content: space-around;
@@ -157,6 +161,14 @@ thead {
 
 #store li:hover {
   border: none;
+}
+
+#store ul {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-around;
+  height: 300px;
 }
 
 #store li {
