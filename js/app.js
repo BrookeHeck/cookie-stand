@@ -166,7 +166,7 @@ function createForm() {
     ['Maximum Customers: ', 'maxCust'],
     ['Average: ', 'average']
   ];
-  let formDiv = document.createElement('div');
+  let formDiv = document.createElement('fieldset');
   for(let input of inputs) {
     
     formDiv.setAttribute('class', 'formDiv');
@@ -208,13 +208,13 @@ function createForm() {
       shopObj.maxCust = maxCust.value;
       shopObj.average = average.value;
     }
-    formDiv.innerHTML = "";
+    formDiv.remove();
+    addButton.disabled = '';
     renderTables();
   });
 
   formContainer.appendChild(formDiv);
 
-  addButton.disabled = 'disabled';
   addButton.disabled = 'disabled';
 }
 
