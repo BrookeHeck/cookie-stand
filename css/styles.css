@@ -206,7 +206,7 @@ button:hover {
 .formDiv {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   justify-content: space-around;
   margin: 0 auto;
   font-size: 20px;
@@ -222,12 +222,18 @@ button:hover {
 
 #storeForm {
   display: flex;
-  justify-items: space-around;
-  margin: 0 auto;
+  align-items: center;
 }
 
 #storeForm>* {
   flex: 1;
+}
+
+#storeForm .formDiv legend {
+  margin: 0 auto;
+  padding: 6px;
+  font-size: 24px;
+  color: #e63946;
 }
 
 

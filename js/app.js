@@ -159,14 +159,20 @@ const formContainer = document.querySelector('#storeForm');
 const addButton = document.querySelector('#addButton');
 addButton.addEventListener('click', createForm);
 
+
+// creates a form when user clicks on the add or update button
+// submit button has event listener that will update a store if the location already exists or add a new store if it doesn't exist
 function createForm() {
   const inputs = [
-    ['Location: ', 'location'],
-    ['Minimum Customers: ', 'minCust'],
-    ['Maximum Customers: ', 'maxCust'],
-    ['Average: ', 'average']
+    ['Location', 'location'],
+    ['Minimum Customers', 'minCust'],
+    ['Maximum Customers', 'maxCust'],
+    ['Average', 'average']
   ];
   let formDiv = document.createElement('fieldset');
+  let legend = document.createElement('legend');
+  legend.innerHTML = 'Store Information';
+  formDiv.appendChild(legend);
   for(let input of inputs) {
     
     formDiv.setAttribute('class', 'formDiv');
@@ -189,7 +195,7 @@ function createForm() {
   submitButton.addEventListener('click', () => {
     let isPresent = false;
     let shopObj = null;
-    let location = document.querySelector('#location')
+    let location = document.querySelector('#location');
     let minCust = document.querySelector('#minCust');
     let maxCust = document.querySelector('#maxCust');
     let average = document.querySelector('#average');
@@ -212,9 +218,7 @@ function createForm() {
     addButton.disabled = '';
     renderTables();
   });
-
   formContainer.appendChild(formDiv);
-
   addButton.disabled = 'disabled';
 }
 
