@@ -48,6 +48,12 @@ function buyProduct() {
   formContainer.appendChild(createFieldSet('Address', address));
   let submitButton = document.createElement('button');
   submitButton.innerHTML = 'Submit';
+  submitButton.addEventListener('click', () => {
+    formContainer.innerHTML ='';
+    cookieButton.disabled = '';
+    cutterButton.disabled = '';
+    shirtButton.disabled = '';
+  });
   formContainer.appendChild(submitButton);
 }
 
@@ -63,15 +69,15 @@ let cutterButton = document.querySelector('#cutterButton');
 cutterButton.addEventListener('click', () => {
   buyProduct();
   cookieButton.disabled = 'disabled';
-  cutterButton.disabled = 'disabled.';
-  shirtButton.disabled = 'disabled.';
+  cutterButton.disabled = 'disabled';
+  shirtButton.disabled = 'disabled';
 });
 
 let shirtButton = document.querySelector('#shirtButton');
 shirtButton.addEventListener('click', () => {
   buyProduct();
   shirtButton.disabled = 'disabled';
-  shirtButton.disabled = 'disabled.';
-  shirtButton.disabled = 'disabled.';
+  shirtButton.disabled = 'disabled';
+  shirtButton.disabled = 'disabled';
 });
 
